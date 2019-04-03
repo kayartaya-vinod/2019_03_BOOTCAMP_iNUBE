@@ -3,7 +3,7 @@
 By <a href="https://vinod.co/view/whoami">Vinod Kumar Kayartaya</a>
 
 
-See the *Examples* folder for all MVC application demos.
+See the <a href="Examples">Examples</a> folder for all MVC application demos.
 
 
 ## Check out my courses on Udemy
