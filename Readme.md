@@ -1,10 +1,10 @@
 # Bootcamp training - iNube Solutions.
 
-By <a href="https://vinod.co/view/whoami">Vinod Kumar Kayartaya</a>
+By <a target="_blank" href="https://vinod.co/view/whoami">Vinod Kumar Kayartaya</a>
 
 
-* See the <a href="Examples">Examples</a> folder for all MVC application demos.
-* Refer <a href="https://tutorialsteacher.com/mvc/">this website</a> for fine tuning your ASP.Net MVC skills.
+* See the <a target="_blank" href="Examples">Examples</a> folder for all MVC application demos.
+* Refer <a target="_blank" href="https://tutorialsteacher.com/mvc/">this website</a> for fine tuning your ASP.Net MVC skills.
 
 
 ## Check out my courses on Udemy
