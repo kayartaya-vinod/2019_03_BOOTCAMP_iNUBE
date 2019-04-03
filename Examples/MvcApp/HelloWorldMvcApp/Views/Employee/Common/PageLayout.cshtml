@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>iNube Solutions - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container"> 
+        <h1 class="alert alert-info">iNube Solutions - @ViewBag.Title</h1>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <!-- sidebar with navigation options-->
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Home", "")</li>
+                    <li class="list-group-item">@Html.ActionLink("Employee list", "List", "Employee")</li>
+                    <li class="list-group-item">@Html.ActionLink("Add employee", "Add", "Employee")</li>
+                </ul>
+
+            </div>
+            <div class="col-md-8">
+                <!-- main/variable content area-->
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Site.js")"></script>
+    
+</body>
+</html>

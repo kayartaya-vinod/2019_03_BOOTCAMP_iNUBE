@@ -1,0 +1,43 @@
+﻿@using MyBasketApp.Models
+
+@model List<Product>
+@{
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+}
+<div class="row">
+    @foreach (Product p in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img src="@Url.Content("~/assets/images/products/")@p.Picture" alt="@p.Description"
+                     class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                    <p style="height: 60px;">@p.Description</p>
+                    <p>Rs.@p.UnitPrice</p>
+                    
+                    <button class="btn btn-primary btn-block"
+                            type="button"
+                            onclick="addToCart(@p.ID)">
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    function addToCart(id) {
+        var url = '/home/addtocart/' + id;
+        $.ajax({
+            url: url,
+            success: function (resp) {
+                var out = "";
+                out = '<a href="/home/viewcart/" class="btn btn-success btn-block">'
+                    + resp + ' items in your cart</a>'
+                $("div#cartDetails").html(out);
+                toastr.success('Cart updated. Total products = ' + resp);
+            }
+        });
+    }
+</script>

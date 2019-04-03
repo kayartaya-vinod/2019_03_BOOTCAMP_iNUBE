@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MVC Security Demo App</title>
+</head>
+<body>
+    <div> 
+        <h1>MVC Security Demo App</h1>
+        
+        <div>
+            @Html.ActionLink("Home", "Index", "Home")
+            &middot;
+            @Html.ActionLink("About us", "About", "Home")
+            &middot;
+            @Html.ActionLink("Manage users", "ManageUsers", "Home")
+            &middot;
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Logout", "Logout", "Security")
+                }
+                else
+                {
+                    @Html.ActionLink("Login", "Login", "Security")
+                }
+            }
+        </div>
+        <hr />
+
+        <div>
+            @RenderBody()
+        </div>
+
+    </div>
+</body>
+</html>

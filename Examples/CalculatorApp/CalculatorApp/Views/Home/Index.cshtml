@@ -1,0 +1,55 @@
+﻿@model List<string>
+@{
+
+    ViewBag.Title = "Calculator App";
+    Layout = null;
+}
+<!doctype html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width;" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/bootstrap.css")" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h1 class="alert alert-info text-center">@ViewBag.Title</h1>
+                <form class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label class="col-md-4">Number 1</label>
+                        <div class="col-md-8">
+                            <input id="num1" name="num1" autofocus />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Number 2</label>
+                        <div class="col-md-8">
+                            <input id="num2" name="num2" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button class="btn btn-default" name="op" value="+">+</button>
+                            <button class="btn btn-default" name="op" value="-">-</button>
+                            <button class="btn btn-default" name="op" value="*">*</button>
+                            <button class="btn btn-default" name="op" value="/">/</button>
+                        </div>
+                    </div>
+                </form>
+
+                @foreach (string msg in Model)
+                {
+                    <p>@msg</p>
+                }
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    </div>
+</body>
+</html>

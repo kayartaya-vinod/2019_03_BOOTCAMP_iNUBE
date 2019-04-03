@@ -1,0 +1,33 @@
+﻿@using ContactsMvcApp.Models
+@model List<Contact>
+
+<h3>List of all contacts</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email address</th>
+            <th>Phone number</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Contact c in Model)
+        {
+            <tr>
+                <td>@c.FirstName @c.LastName</td>
+                <td>@c.Email</td>
+                <td>@c.Phone</td>
+                <td>@c.City</td>
+                <td>@c.Country</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = c.ContactID })
+                    |
+                    @Html.ActionLink("Delete", "Delete", new { id = c.ContactID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

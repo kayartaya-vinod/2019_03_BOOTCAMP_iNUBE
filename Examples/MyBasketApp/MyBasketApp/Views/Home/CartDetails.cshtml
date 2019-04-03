@@ -1,0 +1,16 @@
+﻿@using MyBasketApp.Models
+
+@model Dictionary<int, LineItem>
+@{
+    Layout = null;
+
+    if (Model is null || Model.Count == 0)
+    {
+        <h5 class="text-center">Your cart is empty!</h5>
+    }
+    else
+    {
+        @Html.ActionLink(Model.Count + " items in your cart", "ViewCart",
+       null, new { @class="btn btn-success btn-block"})
+    }
+}

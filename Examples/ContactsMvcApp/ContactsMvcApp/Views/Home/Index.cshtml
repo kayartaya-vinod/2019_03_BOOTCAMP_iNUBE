@@ -1,0 +1,77 @@
+﻿@using ContactsMvcApp.Models
+@model Contact
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Scripts/bootstrap.css")"
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(m => m.ContactID)
+                    <div>
+                        <label>Firstname</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.FirstName, new { @autofocus = "" })
+                        </div>
+                    </div>
+                    <div>
+                        <label>Lastname</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.LastName)
+                        </div>
+                    </div>
+                    <div>
+                        <label>Email address</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.Email)
+                        </div>
+                    </div>
+                    <div>
+                        <label>Phone number</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.Phone)
+                        </div>
+                    </div>
+                    <div>
+                        <label>City</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.City)
+                        </div>
+                    </div>
+                    <div>
+                        <label>Country</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.Country)
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <button>Save changes</button>
+                            @Html.ActionLink("Cancel", "Index")
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+
+
+        @* Following statement is a.k.a SSI (server side include) *@
+        @Html.Action("ViewAll")
+    </div>
+</body>
+</html>

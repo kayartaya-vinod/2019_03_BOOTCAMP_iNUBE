@@ -1,0 +1,57 @@
+﻿@model HelloWorldMvcApp.Models.Employee
+
+@{
+    var title = Model.Gender == "Male" ? "Mr." : "Ms.";
+    ViewBag.Title = "Edit details of " + title + Model.Name;
+    Layout = "~/Views/Employee/Common/PageLayout.cshtml";
+}
+
+
+<form method="post" class="form-horizontal" onsubmit="return validateEmployeeForm()">
+    @Html.HiddenFor(m => m.Id, new { @id = "emp_id" })
+
+    <div class="form-group">
+        <label class="col-md-3" for="Name">Name</label>
+        <div class="col-md-5">
+            @Html.TextBox("Name", null, new { @id = "emp_name", @class = "form-control", @autofocus = "true" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3">Gender</label>
+        <div class="col-md-5">
+            <label>
+                @Html.RadioButton("Gender", "Male") Male
+            </label>
+            <label>
+                @Html.RadioButton("Gender", "Female") Female
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="City">City</label>
+        <div class="col-md-5">
+            @* Html.TextBoxFor is a strongly-typed helper function *@
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="Email">Email</label>
+        <div class="col-md-5">
+            @Html.TextBox("Email", null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3" for="Salary">Salary</label>
+        <div class="col-md-5">
+            @Html.TextBox("Salary", null, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button class="btn btn-primary">Save details</button>
+            @Html.ActionLink("Cancel", "List", "Employee")
+            <div id="errMsgs"></div>
+        </div>
+    </div>
+</form>

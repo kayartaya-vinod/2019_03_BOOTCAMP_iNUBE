@@ -1,0 +1,50 @@
+﻿@using MvcAppWithDbData.Models
+
+@model MvcAppWithDbData.Models.Shipper
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>Northwind Order Processing System</h1>
+        <hr />
+        <h3>Add/Modify shipper detaisl</h3>
+        <p>
+            @Html.ActionLink("Add new", "AddNew")
+        </p>
+        <form method="post">
+            @Html.HiddenFor(m => m.ShipperID)
+
+            <div>
+                <label>Company Name</label>
+                <div>
+                    @Html.EditorFor(m => m.CompanyName)
+                </div>
+            </div>
+            <div>
+                <label>Phone number</label>
+                <div>
+                    @Html.EditorFor(m => m.Phone)
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button>Save changes</button>
+                </div>
+            </div>
+        </form>
+
+        @Html.Action("ListShippers")
+
+    </div>
+</body>
+</html>

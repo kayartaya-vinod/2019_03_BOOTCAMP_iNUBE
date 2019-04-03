@@ -1,0 +1,61 @@
+﻿@using MyBasketApp.Models
+
+@model IEnumerable<LineItem>
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+}
+
+<h3>Your cart contains...</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Sl no</th>
+            <th>Product description</th>
+            <th>Unit price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+            <th>Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int slno = 0;
+            decimal? total = 0;
+        }
+        @foreach (LineItem item in Model)
+        {
+            slno++;
+            total += (item.Quantity * item.UnitPrice * (100 - item.Discount) / 100);
+
+            <tr>
+                <td>@slno</td>
+                <td>
+                    <img src="~/assets/images/products/@item.Product.Picture"
+                         style="height: 30px" />
+                    @item.Product.Description
+                </td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Quantity</td>
+                <td>@item.Discount</td>
+                <td>@(item.UnitPrice * item.Quantity * (100 - item.Discount) / 100)</td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveItemFromCart", new { id = item.Product.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" align="right">Total amount: </td>
+            <td>@total</td>
+            <td></td>
+        </tr>
+    </tfoot>
+
+</table>
+
+@Html.ActionLink("Empty cart", "EmptyCart", new { }, new { @class = "btn btn-danger" })
+@Html.ActionLink("Place order", "PlaceOrder", new { }, new { @class="btn btn-success"})

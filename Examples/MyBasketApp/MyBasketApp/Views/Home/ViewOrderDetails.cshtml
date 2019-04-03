@@ -1,0 +1,76 @@
+﻿@using MyBasketApp.Models
+
+@{
+    ViewBag.Title = "ViewOrderDetails";
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+    Order order = (Order)TempData["order"];
+    List<LineItem> items = (List<LineItem>)TempData["items"];
+    var total = TempData["total"];
+
+    TempData.Keep("order");
+    TempData.Keep("items");
+    TempData.Keep("total");
+
+}
+
+<h3>Your order has been placed successfully.</h3>
+
+<table>
+    <tbody>
+        <tr>
+            <td>Order ID</td>
+            <td>: @order.ID</td>
+        </tr>
+        <tr>
+            <td>Order Date</td>
+            <td>: @order.OrderDate</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>: @order.Status</td>
+        </tr>
+        <tr>
+            <td>Order Total</td>
+            <td>: @total</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Items in your order: </h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Sl no</th>
+            <th>Product description</th>
+            <th>Unit price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int slno = 0;
+        }
+
+        @foreach (LineItem item in items)
+        {
+            slno++;
+            <tr>
+                <td>@slno</td>
+                <td>
+                    <img src="~/assets/images/products/@item.Product.Picture"
+                         style="height: 30px" />
+                    @item.Product.Description
+                </td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Quantity</td>
+                <td>@item.Discount</td>
+                <td>@(item.UnitPrice * item.Quantity * (100 - item.Discount) / 100)</td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

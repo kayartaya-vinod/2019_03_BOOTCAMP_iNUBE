@@ -1,0 +1,14 @@
+﻿@using MyBasketApp.Models
+
+@model List<Brand>
+
+<h5>Brands</h5>
+<ul class="list-group">
+    @foreach (Brand b in Model)
+    {
+        <li class="list-group-item">
+            @Html.ActionLink(b.Name, "ProductsByBrand", new { id = b.ID })
+        </li>
+    }
+
+</ul>

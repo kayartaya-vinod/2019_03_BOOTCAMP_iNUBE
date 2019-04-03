@@ -1,0 +1,73 @@
+﻿@using EfMvcApp.Models
+@model Product
+@{
+
+    Layout = null;
+    List<Category> categories = ViewBag.Categories;
+    List<Brand> brands = ViewBag.Brands;
+}
+
+<h1>Product details</h1>
+<hr />
+
+@using (Html.BeginForm("AddNewProduct"))
+{
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.CategoryID, "Category", new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.DropDownListFor(m=>m.CategoryID,
+                new SelectList(categories, "ID", "Name"),
+                "Choose a category", new { @class="form-control"})
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.BrandID, "Brand", new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.DropDownListFor(m=>m.BrandID,
+                new SelectList(brands, "ID", "Name"),
+                "Choose a brand", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.QuantityPerUnit, new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.QuantityPerUnit, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UnitPrice, new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Picture, new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Picture, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Discount, new { @class = "col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Discount, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+            <button class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+}

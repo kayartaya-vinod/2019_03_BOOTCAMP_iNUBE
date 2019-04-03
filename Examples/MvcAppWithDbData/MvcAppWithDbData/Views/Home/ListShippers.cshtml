@@ -1,0 +1,30 @@
+﻿@using MvcAppWithDbData.Models
+
+@model List<Shipper>
+
+<h3>List of shippers</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Shipper Id</th>
+            <th>Company Name</th>
+            <th>Phone number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Shipper s in Model)
+        {
+            <tr>
+                <td>@s.ShipperID</td>
+                <td>@s.CompanyName</td>
+                <td>@s.Phone</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = s.ShipperID })
+                    |
+                    @Html.ActionLink("Delete", "DeleteShipper", new { id = s.ShipperID})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

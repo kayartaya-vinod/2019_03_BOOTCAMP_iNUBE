@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-3">
+        @* Sidebar here *@
+        @Html.Action("Categories", "Home")
+        @Html.Action("Brands", "Home")
+
+        <p class="text-center">@Html.ActionLink("All products", "Index", "Home")</p>
+
+        <div id="cartDetails">
+            @Html.Action("CartDetails", "Home")
+        </div>
+    </div>
+    <div class="col-md-9">
+        @* Main content area (List of products, login page, reg. page, etc) *@
+
+        @RenderBody()
+    </div>
+</div>
